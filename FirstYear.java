@@ -3,75 +3,65 @@ import java.awt.*;
 
 public class FirstYear {
     JLabel usernameLabel;
-    JLabel firstSem;
-    JLabel secondSem;
     JPanel panel;
-    JLabel[] firstSemSubjectLabels;
-    JLabel[] secondSemSubjectLabels;
+    JLabel[] subjectLabels;
+    JPanel textFieldPanel;
+    JTextField[] subjectTextFields;
 
     public FirstYear(JFrame frame, String username) {
-        panel = new JPanel(new BorderLayout());
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel = new JPanel();
+        panel.setLayout(null);
 
-        String[] firstSemSubjects = {
-            "ENGL100 | Communication Arts", // 0 
-            "SOCIO102 | Gender and Society", // 1
-            "MATH100 | College Mathematics", // 2
-            "PSYCH101 | Understanding the Self", // 3
-            "CC-INTCOM11 | Introduction to Computing", // 4
-            "CC-COMPROG11 | Computer Programming 1", // 5
-            "IT-WEBDEV11 | Web Design & Development", // 6
-            "PE101 | Movement Competency Training", // 7
-            "NSTP101 | National Service Training Program 1", // 8
-        };
-        
-        String[] secondSemSubjects = {
-            "ENGL101 | Purposive Communication", // 0
-            "ENTREP101 | The Entreprenurial Mind", // 1
-            "MATH101 | Mathematics in the Modern World", // 2
-            "HIST101 | Readings in Philippine History", // 3
-            "HUM101 | Art Appreciation", // 4
-            "CC-COMPROG12 | Computer Programming 2", // 5
-            "CC-DISCRET12 | Discrete Structures", // 6
-            "PE102 | Exercise-based Fitness Activities", // 7
-            "NSTP102 | National Service Training Program 2", // 8
+        // Initialize Panels
+
+
+        String[] subjects = {
+            "ENGL100 | Communication Arts",
+            "SOCIO102 | Gender and Society",
+            "MATH100 | College Mathematics",
+            "PSYCH101 | Understanding the Self",
+            "CC-INTCOM11 | Introduction to Computing",
+            "CC-COMPROG11 | Computer Programming 1",
+            "IT-WEBDEV11 | Web Design & Development",
+            "PE101 | Movement Competency Training",
+            "NSTP101 | National Service Training Program 1",
+            "ENGL101 | Purposive Communication",
+            "ENTREP101 | The Entrepreneurial Mind",
+            "MATH101 | Mathematics in the Modern World",
+            "HIST101 | Readings in Philippine History",
+            "HUM101 | Art Appreciation",
+            "CC-COMPROG12 | Computer Programming 2",
+            "CC-DISCRET12 | Discrete Structures",
+            "PE102 | Exercise-based Fitness Activities",
+            "NSTP102 | National Service Training Program 2"
         };
 
-        firstSemSubjectLabels = new JLabel[firstSemSubjects.length];
-        secondSemSubjectLabels = new JLabel[secondSemSubjects.length];
+        subjectLabels = new JLabel[subjects.length];
+        subjectTextFields = new JTextField[subjects.length];
 
         usernameLabel = new JLabel("Welcome, " + username + "!");
         usernameLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        usernameLabel.setBorder(BorderFactory.createEmptyBorder(30, 170, 0, 0));
-        panel.add(usernameLabel, BorderLayout.NORTH);
+        usernameLabel.setBounds(30, 170, 50, 50);
+        panel.add(usernameLabel);
 
-        int topPaddingIncrement = 5;
+        int yLabels = 15;
 
-        for (int i = 0; i < firstSemSubjects.length; i++) {
-            firstSemSubjectLabels[i] = new JLabel(firstSemSubjects[i]);
-            firstSemSubjectLabels[i].setFont(new Font(Font.SERIF, Font.PLAIN, 15));
+        for (int i = 0; i < subjects.length; i++) {
+            subjectLabels[i] = new JLabel(subjects[i]);
+            subjectLabels[i].setFont(new Font(Font.SERIF, Font.BOLD, 12));
+            subjectLabels[i].setBounds(30,yLabels * (i + i),300,50);
 
-            int topPadding = 10 + (topPaddingIncrement);
-            firstSemSubjectLabels[i].setBorder(BorderFactory.createEmptyBorder(topPadding, 20, 0, 0));
+            panel.add(subjectLabels[i]);
 
-            panel.add(firstSemSubjectLabels[i]);
+            // Initialize and add JTextFields
+            subjectTextFields[i] = new JTextField(10);
+            subjectTextFields[i].setFont(new Font(Font.SERIF, Font.PLAIN, 10));
+
+            panel.add(subjectTextFields[i]);
         }
-
-        for (int i = 0; i < secondSemSubjects.length; i++) {
-            secondSemSubjectLabels[i] = new JLabel(secondSemSubjects[i]);
-            secondSemSubjectLabels[i].setFont(new Font(Font.SERIF, Font.PLAIN, 15));
-
-            int topPadding = 10 + (topPaddingIncrement);
-            secondSemSubjectLabels[i].setBorder(BorderFactory.createEmptyBorder(topPadding, 20, 0, 0));
-
-            panel.add(secondSemSubjectLabels[i]);
-        }
-
-
     }
 
     public JPanel getPanel() {
         return panel;
     }
-
 }
