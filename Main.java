@@ -8,11 +8,8 @@ public class Main {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         
-        //Login login = new Login(frame);
-        //frame.add(login.getPanel());
-
-        UserInfo user = new UserInfo(frame);
-        frame.add(user.getPanel());
+        Login login = new Login(frame);
+        frame.add(login.getPanel());
         
         frame.setVisible(true);
     }

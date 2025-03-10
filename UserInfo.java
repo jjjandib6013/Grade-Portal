@@ -9,9 +9,12 @@ public class UserInfo {
     JButton continueButton;
     JComboBox<String> yearLevelCombobox;
     JPanel panel;
+    String username;
 
-    public UserInfo(JFrame frame) {
-        FirstYear first = new FirstYear();
+    public UserInfo(JFrame frame, String username) {
+        this.username = username;
+
+        FirstYear first = new FirstYear(frame, username);
         SecondYear second = new SecondYear();
         ThirdYear third = new ThirdYear();
         FourthYear fourth = new FourthYear();
@@ -50,18 +53,23 @@ public class UserInfo {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userName = nameTextField.getText();
-                String yearLevel = yearLevelCombobox.getSelectedItem();
+                String username = nameTextField.getText();
+                String yearLevel = (String) yearLevelCombobox.getSelectedItem();
 
-                if (yearLevel == "1ST YEAR") {
+                frame.getContentPane().removeAll();
+
+                if ("1ST YEAR".equals(yearLevel)) {
                     frame.add(first.getPanel());
-                } else if (yearLevel == "2ND YEAR") {
+                } else if ("2ND YEAR".equals(yearLevel)) {
                     frame.add(second.getPanel());
-                } else if (yearLevel == "3RD YEAR") {
+                } else if ("3RD YEAR".equals(yearLevel)) {
                     frame.add(third.getPanel());
-                } else if (yearLevel == "4TH YEAR") {
+                } else if ("4TH YEAR".equals(yearLevel)) {
                     frame.add(fourth.getPanel());
                 }
+                
+                frame.revalidate();
+                frame.repaint();
             }
         });
         gbc.gridx = 1;

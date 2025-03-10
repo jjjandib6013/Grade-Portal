@@ -9,6 +9,8 @@ public class Login {
     JPanel panel;
 
     public Login(JFrame frame) {
+        UserInfo user = new UserInfo(frame, null);
+
         frame.setTitle("Login Form");
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -28,7 +30,11 @@ public class Login {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panel, "Login Button Clicked");
+                frame.getContentPane().removeAll();
+                UserInfo userInfo = new UserInfo(frame, null);
+                frame.add(userInfo.getPanel());
+                frame.revalidate();
+                frame.repaint();
             }
         });
         gbc.gridx = 0;
