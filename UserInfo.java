@@ -11,14 +11,11 @@ public class UserInfo {
     JPanel panel;
     String username;
 
-    public UserInfo(JFrame frame, String username) {
+    public UserInfo(String username) {
         this.username = username;
+    }
 
-        FirstYear first = new FirstYear(frame, username);
-        SecondYear second = new SecondYear();
-        ThirdYear third = new ThirdYear();
-        FourthYear fourth = new FourthYear();
-
+    public UserInfo(JFrame frame) {
         frame.setTitle("Information Page");
         panel = new JPanel(new GridBagLayout());
 
@@ -53,19 +50,19 @@ public class UserInfo {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = nameTextField.getText();
+                username = nameTextField.getText();
                 String yearLevel = (String) yearLevelCombobox.getSelectedItem();
 
                 frame.getContentPane().removeAll();
 
                 if ("1ST YEAR".equals(yearLevel)) {
-                    frame.add(first.getPanel());
+                    frame.add(new FirstYear(frame, username).getPanel());
                 } else if ("2ND YEAR".equals(yearLevel)) {
-                    frame.add(second.getPanel());
+                    frame.add(new SecondYear(frame, username).getPanel());
                 } else if ("3RD YEAR".equals(yearLevel)) {
-                    frame.add(third.getPanel());
+                    frame.add(new ThirdYear(frame, username).getPanel());
                 } else if ("4TH YEAR".equals(yearLevel)) {
-                    frame.add(fourth.getPanel());
+                    frame.add(new FourthYear(frame, username).getPanel());
                 }
                 
                 frame.revalidate();

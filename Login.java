@@ -9,7 +9,7 @@ public class Login {
     JPanel panel;
 
     public Login(JFrame frame) {
-        UserInfo user = new UserInfo(frame, null);
+        UserInfo user = new UserInfo(frame);
 
         frame.setTitle("Login Form");
         panel = new JPanel(new GridBagLayout());
@@ -31,7 +31,7 @@ public class Login {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().removeAll();
-                UserInfo userInfo = new UserInfo(frame, null);
+                UserInfo userInfo = new UserInfo(frame);
                 frame.add(userInfo.getPanel());
                 frame.revalidate();
                 frame.repaint();
