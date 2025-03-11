@@ -19,7 +19,7 @@ public class FirstYear {
 
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5); // Padding
+        gbc.insets = new Insets(5, 5, 5, 5);
 
         String[] subjects = {
             "First Semester Subjects",
@@ -40,11 +40,9 @@ public class FirstYear {
         gradesLabel = new JLabel("Grades");
 
         for (int i = 0; i < subjects.length; i++) {
-
-            // Label Constraints
-            gbc.gridx = 0; // Column 0
-            gbc.gridy = i; // Row increases
-            gbc.anchor = GridBagConstraints.WEST; // Align left
+            gbc.gridx = 0; 
+            gbc.gridy = i; 
+            gbc.anchor = GridBagConstraints.WEST; 
             subjectLabels[i] = new JLabel(subjects[i]);
             subjectLabels[i].setFont(new Font(Font.SERIF, Font.BOLD, 12));
             panel.add(subjectLabels[i], gbc);
@@ -52,30 +50,28 @@ public class FirstYear {
                 panel.add(gradesLabel);
 
             if (i != 0) {
-                // Text Field Constraints
-            gbc.gridx = 1; // Column 1 (Next to Label)
-            gbc.anchor = GridBagConstraints.CENTER; // Center align text field
+            gbc.gridx = 1;
+            gbc.anchor = GridBagConstraints.CENTER;
             subjectTextFields[i] = new JTextField();
-            subjectTextFields[i].setPreferredSize(new Dimension(50, 20)); // Small box
+            subjectTextFields[i].setPreferredSize(new Dimension(50, 20));
             subjectTextFields[i].setHorizontalAlignment(JTextField.CENTER);
             panel.add(subjectTextFields[i], gbc);
             }
         }
         nextButton = new JButton("Next");
             gbc.gridx = 0;
-            gbc.gridy = subjects.length + 1; // Place it after all fields
-            gbc.gridwidth = 2; // Span across two columns
+            gbc.gridy = subjects.length + 1;
+            gbc.gridwidth = 2;
             gbc.anchor = GridBagConstraints.CENTER;
             panel.add(nextButton, gbc);
 
-            // Button Click Action
             nextButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     double totalGrades = 0;
                     int count = 0;
     
-                    for (int i = 1; i < subjects.length; i++) { // Skip first element (title)
+                    for (int i = 1; i < subjects.length; i++) {
                         try {
                             double grade = Double.parseDouble(subjectTextFields[i].getText().trim());
                             totalGrades += grade;
@@ -104,7 +100,7 @@ public class FirstYear {
 
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5); // Padding
+        gbc.insets = new Insets(5, 5, 5, 5);
 
         String[] subjects = {
             "Second Semester Subjects",
@@ -125,11 +121,9 @@ public class FirstYear {
         gradesLabel = new JLabel("Grades");
 
         for (int i = 0; i < subjects.length; i++) {
-
-            // Label Constraints
-            gbc.gridx = 0; // Column 0
-            gbc.gridy = i; // Row increases
-            gbc.anchor = GridBagConstraints.WEST; // Align left
+            gbc.gridx = 0;
+            gbc.gridy = i;
+            gbc.anchor = GridBagConstraints.WEST;
             subjectLabels[i] = new JLabel(subjects[i]);
             subjectLabels[i].setFont(new Font(Font.SERIF, Font.BOLD, 12));
             panel.add(subjectLabels[i], gbc);
@@ -137,30 +131,28 @@ public class FirstYear {
                 panel.add(gradesLabel);
 
             if (i != 0) {
-                // Text Field Constraints
-            gbc.gridx = 1; // Column 1 (Next to Label)
-            gbc.anchor = GridBagConstraints.CENTER; // Center align text field
+            gbc.gridx = 1;
+            gbc.anchor = GridBagConstraints.CENTER;
             subjectTextFields[i] = new JTextField();
-            subjectTextFields[i].setPreferredSize(new Dimension(50, 20)); // Small box
+            subjectTextFields[i].setPreferredSize(new Dimension(50, 20));
             subjectTextFields[i].setHorizontalAlignment(JTextField.CENTER);
             panel.add(subjectTextFields[i], gbc);
             }
         }
         nextButton = new JButton("Continue");
             gbc.gridx = 0;
-            gbc.gridy = subjects.length + 1; // Place it after all fields
-            gbc.gridwidth = 2; // Span across two columns
+            gbc.gridy = subjects.length + 1;
+            gbc.gridwidth = 2;
             gbc.anchor = GridBagConstraints.CENTER;
             panel.add(nextButton, gbc);
 
-            // Button Click Action
             nextButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     double totalGrades = 0;
                     int count = 0;
     
-                    for (int i = 1; i < subjects.length; i++) { // Skip first element (title)
+                    for (int i = 1; i < subjects.length; i++) {
                         try {
                             double grade = Double.parseDouble(subjectTextFields[i].getText().trim());
                             totalGrades += grade;
