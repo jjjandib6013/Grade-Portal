@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=FourthYear
+comment1.params=frame\ username
+comment1.target=FourthYear(javax.swing.JFrame,\ java.lang.String)
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=frame\ username
+comment3.target=javax.swing.JPanel\ secondSem(javax.swing.JFrame,\ java.lang.String)
+comment4.params=
+comment4.target=javax.swing.JPanel\ getPanel()
+comment5.params=
+comment5.target=double\ getFirstSemAvgGrade()
+comment6.params=
+comment6.target=double\ getSecondSemAvgGrade()
+comment7.params=
+comment7.target=double\ getTotalAvgGrade()
+numComments=8

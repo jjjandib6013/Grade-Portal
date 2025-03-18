@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Suggest
+comment1.params=frame\ username\ firstSemAvg\ secondSemAvg\ totalAvg\ failedSubjects
+comment1.target=Suggest(javax.swing.JFrame,\ java.lang.String,\ double,\ double,\ double,\ java.lang.String)
+comment2.params=frame\ username\ suggestions
+comment2.target=Suggest(javax.swing.JFrame,\ java.lang.String,\ java.lang.String)
+comment3.params=avgGrade
+comment3.target=java.lang.String\ determineSuggestion(double)
+comment4.params=firstSemAvg\ username\ secondSemAvg\ totalAvg\ suggestion\ failedSubjects
+comment4.target=void\ saveSuggestionsToFile(double,\ java.lang.String,\ double,\ double,\ java.lang.String,\ java.lang.String)
+comment5.params=
+comment5.target=javax.swing.JPanel\ getPanel()
+numComments=6
