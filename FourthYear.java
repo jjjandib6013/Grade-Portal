@@ -132,17 +132,75 @@ public class FourthYear {
             gbc.gridy = i;
             gbc.anchor = GridBagConstraints.WEST;
             subjectLabels[i] = new JLabel(subjects[i]);
+            subjectLabels[i].setFont(new Font(Font.SERIF, Font.BOLD, 12));
             panel.add(subjectLabels[i], gbc);
+
+                panel.add(gradesLabel);
+
             if (i != 0) {
-                gbc.gridx = 1;
-                subjectTextFields[i] = new JTextField();
-                subjectTextFields[i].setPreferredSize(new Dimension(50, 20));
-                subjectTextFields[i].setHorizontalAlignment(JTextField.CENTER);
-                panel.add(subjectTextFields[i], gbc);
+            gbc.gridx = 1;
+            gbc.anchor = GridBagConstraints.CENTER;
+            subjectTextFields[i] = new JTextField();
+            subjectTextFields[i].setPreferredSize(new Dimension(50, 20));
+            subjectTextFields[i].setHorizontalAlignment(JTextField.CENTER);
+            panel.add(subjectTextFields[i], gbc);
             }
         }
+        nextButton = new JButton("Continue");
+            gbc.gridx = 0;
+            gbc.gridy = subjects.length + 1;
+            gbc.gridwidth = 2;
+            gbc.anchor = GridBagConstraints.CENTER;
+            panel.add(nextButton, gbc);
 
-        return panel;
+            nextButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    double totalGrades = 0;
+                    int count = 0;
+                    StringBuilder failedSubjects = new StringBuilder();
+            
+                    for (int i = 1; i < subjects.length; i++) {
+                        try {
+                            double grade = Double.parseDouble(subjectTextFields[i].getText().trim());
+                            if (grade >= 3.1 && grade <= 5.0) {
+                                failedSubjects.append(subjectLabels[i].getText()).append("\n");
+                            }
+                            totalGrades += grade;
+                            count++;
+                        } catch (NumberFormatException ex) {
+                            JOptionPane.showMessageDialog(frame, "Please enter valid numeric grades.");
+                            return;
+                        }
+                    }
+            
+                    if (count > 0) {
+                        secondSemAvgGrade = totalGrades / count;
+                        JOptionPane.showMessageDialog(frame, "Second Semester Average Grade: " + String.format("%.1f", secondSemAvgGrade));
+                    }
+            
+                    if (failedSubjects.length() > 0) {
+                        double totalAvgGrade = (firstSemAvgGrade + secondSemAvgGrade) / 2;
+                        JOptionPane.showMessageDialog(frame, "Warning: You have failed subjects.");
+                        frame.getContentPane().removeAll();
+                        Suggest suggest = new Suggest(frame, username, firstSemAvgGrade, secondSemAvgGrade, totalAvgGrade, failedSubjects.toString());
+                        frame.add(suggest.getPanel());
+                        frame.revalidate();
+                        frame.repaint();
+                        return;
+                    }
+            
+                    double totalAvgGrade = (firstSemAvgGrade + secondSemAvgGrade) / 2;
+
+                    frame.getContentPane().removeAll();
+                    Suggest suggest = new Suggest(frame, username, firstSemAvgGrade, secondSemAvgGrade, totalAvgGrade, failedSubjects.toString());
+                    frame.add(suggest.getPanel());
+                    frame.revalidate();
+                    frame.repaint();
+                }
+            });
+
+            return panel;
     }
 
     public JPanel getPanel() {
